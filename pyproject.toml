@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "livetrack-mcp"
+version = "0.1.0"
+description = "Autonomous Garmin LiveTrack poller with Claude-powered race coaching via claude-runner"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+keywords = ["mcp", "garmin", "livetrack", "triathlon", "coaching", "claude"]
+dependencies = [
+    "mcp>=1.27.0",
+    "httpx>=0.28.0",
+    "uvicorn>=0.30.0",
+    "opentelemetry-api>=1.25.0",
+    "opentelemetry-sdk>=1.25.0",
+    "opentelemetry-exporter-otlp-proto-http>=1.25.0",
+]
+
+[project.scripts]
+livetrack-mcp = "livetrack_mcp.server:main"
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/livetrack_mcp"]

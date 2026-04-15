@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+secrets/*.env
+!secrets/*.env.tpl
+*.log
+*.db
+*.sqlite*
+.DS_Store
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
